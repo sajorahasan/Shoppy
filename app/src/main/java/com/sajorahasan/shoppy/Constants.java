@@ -35,7 +35,6 @@ public class Constants {
     public static final String ProductAPI = "get-menu-data-by-category-id.php";
     public static final String ProductDetailAPI = "get-menu-detail.php";
 
-
     //Keys for SharedPreferences
     //This would be the name of our shared preferences
     public static final String SHARED_PREF_NAME = "shoppy";

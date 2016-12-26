@@ -128,7 +128,7 @@ public class HomeActivity extends AppCompatActivity
                 fragment = new CartFragment();
                 break;
             case R.id.nav_profile:
-                //fragment = new Menu3();
+                fragment = new ProfileFragment();
                 break;
             case R.id.nav_wishlist:
                 //fragment = new Menu3();
