@@ -6,9 +6,17 @@
     android:layout_height="match_parent"
     tools:context="com.sajorahasan.shoppy.ProductActivity">
 
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="2dp"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/searchView"
         android:scrollbars="none">
 
         <LinearLayout

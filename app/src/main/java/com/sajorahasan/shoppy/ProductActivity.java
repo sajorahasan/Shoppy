@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.Toast;
+import android.widget.SearchView;
 
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.sajorahasan.shoppy.adapter.ProductAdapter;
@@ -24,6 +24,8 @@ public class ProductActivity extends AppCompatActivity implements BaseSliderView
     private ExpandableHeightGridView gridview;
     private ArrayList<Pojo> pojoArrayList;
     private ProductAdapter productAdapter;
+    private SearchView searchView;
+    private String search;
 
     String cat_id;
     static int pro_id;
@@ -32,6 +34,8 @@ public class ProductActivity extends AppCompatActivity implements BaseSliderView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
+
+        searchView = (SearchView) findViewById(R.id.searchView);
 
         gridview = (ExpandableHeightGridView) findViewById(R.id.gridview);
         gridview.setExpanded(true);
@@ -45,11 +49,34 @@ public class ProductActivity extends AppCompatActivity implements BaseSliderView
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(cat_name);
 
-        Toast.makeText(this, "Category id " + cat_id, Toast.LENGTH_SHORT).show();
+        searchView.setQueryHint("Search " + cat_name);
 
+        search="";
         new loadProduct().execute();
 
         gridview.setAdapter(productAdapter);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                //Toast.makeText(getBaseContext(), query, Toast.LENGTH_SHORT).show();
+                search = query;
+                pojoArrayList.clear();
+
+                new loadProduct().execute();
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                search = newText;
+                pojoArrayList.clear();
+
+                new loadProduct().execute();
+                return false;
+            }
+        });
 
     }
 
@@ -62,12 +89,10 @@ public class ProductActivity extends AppCompatActivity implements BaseSliderView
         @Override
         protected Object doInBackground(Object[] objects) {
             // menu API url
-            String ProductAPI = Constants.ProductAPI + "?accesskey=" + Constants.AccessKey + "&category_id=" + cat_id;
+            String ProductAPI = Constants.ProductAPI + "?accesskey=" + Constants.AccessKey + "&category_id=" + cat_id + "&keyword=" + search;
             Log.d(TAG, "onPostExecute: category id " + cat_id);
             try {
                 HttpRequest req = new HttpRequest(Constants.BASE_URL_APP + ProductAPI);
-
-                Log.d(TAG, "doInBackground: url " + ProductAPI);
 
                 JSONObject jObject = req.prepare(HttpRequest.Method.POST).sendAndReadJSON();
 
@@ -87,8 +112,6 @@ public class ProductActivity extends AppCompatActivity implements BaseSliderView
                     p.setProduct_id(pro_id);
                     p.setProduct_image(image);
                     p.setProduct_title(name);
-
-                    Log.d(TAG, "onPostExecute: image " + image);
 
                     pojoArrayList.add(p);
                 }

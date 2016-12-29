@@ -10,10 +10,10 @@ public class Constants {
     static String AccessKey = "12345";
 
     // API URL configuration
-    public static final String AdminPageURL = "http://192.168.0.103/shoppy/";
-    public static final String BASE_URL_APP = "http://192.168.0.103/shoppy/api/";
+    public static final String AdminPageURL = "http://192.168.0.104/shoppy/";
+    public static final String BASE_URL_APP = "http://192.168.0.104/shoppy/api/";
 
-    public static final String BASE_URL = "http://192.168.0.103/";
+    public static final String BASE_URL = "http://192.168.0.104/";
     public static final String REGISTER_OPERATION = "register";
     public static final String LOGIN_OPERATION = "login";
     public static final String CHANGE_PASSWORD_OPERATION = "chgPass";
@@ -34,6 +34,7 @@ public class Constants {
     public static final String CategoryAPI = "get-all-category-data.php";
     public static final String ProductAPI = "get-menu-data-by-category-id.php";
     public static final String ProductDetailAPI = "get-menu-detail.php";
+    public static final String SEARCH_PRODUCTS = "searchProducts.php";
 
     //Keys for SharedPreferences
     //This would be the name of our shared preferences

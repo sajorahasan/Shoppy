@@ -96,9 +96,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                     Snackbar.make(getView(), "Fields are empty !", Snackbar.LENGTH_LONG).show();
                 }
                 break;
-
         }
-
     }
 
     private void goToResetPassword() {
@@ -181,5 +179,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
         Intent i = new Intent(getActivity(), HomeActivity.class);
         getActivity().startActivity(i);
+        getActivity().finish();
     }
 }
