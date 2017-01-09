@@ -153,10 +153,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                     editor.putBoolean(Constants.IS_LOGGED_IN, true);
                     editor.putString(Constants.EMAIL, resp.getUser().getEmail());
                     editor.putString(Constants.NAME, resp.getUser().getName());
+                    editor.putString(Constants.SNO, resp.getUser().getSno());
                     editor.putString(Constants.UNIQUE_ID, resp.getUser().getUnique_id());
 
                     //Saving values to editor
                     editor.apply();
+                    Log.d(TAG, "onResponse: User " + sharedPreferences.getString(Constants.SNO,""));
                     goToHome();
 
                 }

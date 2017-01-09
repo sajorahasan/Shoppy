@@ -1,24 +1,255 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.sajorahasan.shoppy.ProfileFragment">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp">
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="52dp">
 
-        <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btnChangePwd"
+        <!--//main-->
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/circular_button"
-            android:backgroundTint="@color/colorPrimary"
-            android:text="Change Password"
-            android:textColor="@color/white" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="11dp"
+            android:paddingTop="11dp">
 
+            <ImageView
+                android:id="@+id/userProfilePic"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_person" />
 
-    </LinearLayout>
+            <!--******FIRST NAME*******-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="16dp">
 
-</FrameLayout>
+                <customfonts.MyTextView
+                    android:id="@+id/name1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="NAME"
+                    android:textColor="@color/color"
+                    android:textSize="12dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:orientation="vertical">
+
+                    <customfonts.MyEditText
+                        android:id="@+id/etFirstName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:textColor="#333333" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#dad8d8" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--******PHONE NO.********-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <customfonts.MyTextView
+                    android:id="@+id/tvDelPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PHONE NUMBER"
+                    android:textColor="@color/color"
+                    android:textSize="12dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:orientation="vertical">
+
+                    <customfonts.MyEditText
+                        android:id="@+id/etDelPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                        android:textColor="#333333" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#dad8d8" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--******ADDRESS********-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <customfonts.MyTextView
+                    android:id="@+id/address1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ADDRESS"
+                    android:textColor="@color/color"
+                    android:textSize="12dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:orientation="vertical">
+
+                    <customfonts.MyEditText
+                        android:id="@+id/etAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:inputType="textPostalAddress"
+                        android:maxLines="1"
+                        android:textColor="#333333" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#dad8d8" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--******zip********-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <customfonts.MyTextView
+                    android:id="@+id/zip1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PIN CODE"
+                    android:textColor="@color/color"
+                    android:textSize="12dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:orientation="vertical">
+
+                    <customfonts.MyEditText
+                        android:id="@+id/etPin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:maxLines="1"
+                        android:textColor="#333333" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#dad8d8" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!--******CITY********-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <customfonts.MyTextView
+                    android:id="@+id/city1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CITY"
+                    android:textColor="@color/color"
+                    android:textSize="12dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:orientation="vertical">
+
+                    <customfonts.MyEditText
+                        android:id="@+id/etCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:maxLines="1"
+                        android:textColor="#333333" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#dad8d8" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnChangePwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/circular_button"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Change Password"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <customfonts.MyTextView
+        android:id="@+id/updateProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Update Profile"
+        android:textColor="#fff"
+        android:textSize="16dp" />
+
+</RelativeLayout>

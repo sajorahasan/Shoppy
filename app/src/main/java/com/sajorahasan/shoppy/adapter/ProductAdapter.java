@@ -75,6 +75,7 @@ public class ProductAdapter extends BaseAdapter {
                 Intent intent = new Intent(context.getApplicationContext(), ProductDetailActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("product_id", String.valueOf(id));
+                intent.putExtra("cat_name",pojos.get(position).getCat_name());
                 intent.putExtra("product_name", pojos.get(position).getProduct_title());
                 context.startActivity(intent);
             }

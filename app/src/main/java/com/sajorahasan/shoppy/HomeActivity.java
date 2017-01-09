@@ -1,13 +1,13 @@
 package com.sajorahasan.shoppy;
 
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -56,7 +56,8 @@ public class HomeActivity extends AppCompatActivity
 
         tvUserName.setText(pref.getString(Constants.NAME, ""));
         tvEmail.setText(pref.getString(Constants.EMAIL, ""));
-        Log.d(TAG, "onCreate: Email " + tvEmail + pref.getString(Constants.EMAIL, ""));
+        Log.d(TAG, "onCreate: Email " + tvEmail.getText());
+        Log.d(TAG, "onCreate: User " + pref.getString(Constants.SNO, ""));
 
         //add this line to display menu1 when the activity is loaded
         displaySelectedScreen(R.id.nav_home);
@@ -140,7 +141,7 @@ public class HomeActivity extends AppCompatActivity
 
         //replacing the fragment
         if (fragment != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
             ft.replace(R.id.fragment_container, fragment);
             ft.commit();
         }
@@ -158,7 +159,7 @@ public class HomeActivity extends AppCompatActivity
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-
+                        Log.d(TAG, "onClick: User " + Constants.UNIQUE_ID + Constants.SNO);
                         //Getting out sharedPreferences
                         SharedPreferences preferences = getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
                         //Getting editor
@@ -168,7 +169,8 @@ public class HomeActivity extends AppCompatActivity
                         editor.putBoolean(Constants.LOGGEDIN_SHARED_PREF, false);
 
                         //Putting blank value to name & email
-                        editor.putString("uId", "");
+                        editor.putString("unique_id", "");
+                        editor.putString("sno", "");
                         editor.putString("name", "");
                         editor.putString("email", "");
 

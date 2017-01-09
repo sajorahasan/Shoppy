@@ -9,6 +9,7 @@ public class User {
     private String name;
     private String email;
     private String unique_id;
+    private String sno;
     private String phone;
     private String password;
     private String old_password;
@@ -77,5 +78,14 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+
+    public String getSno() {
+        return sno;
+    }
+
+    public void setSno(String sno) {
+        this.sno = sno;
     }
 }

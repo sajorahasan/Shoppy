@@ -6,8 +6,17 @@ package com.sajorahasan.shoppy.model;
 
 public class Pojo {
 
-    private int cat_id, product_id;
-    private String cat_name, cat_image, product_title, product_image, product_desc, product_price, product_quantity;
+    private int cat_id;
+    private int product_id;
+    private int cart_id;
+    private String cat_name;
+    private String cat_image;
+    private String product_title;
+    private String product_image;
+    private String product_desc;
+    private String product_price;
+    private String product_quantity;
+
 
     public int getCat_id() {
         return cat_id;
@@ -79,5 +88,13 @@ public class Pojo {
 
     public void setProduct_quantity(String product_quantity) {
         this.product_quantity = product_quantity;
+    }
+
+    public int getCart_id() {
+        return cart_id;
+    }
+
+    public void setCart_id(int cart_id) {
+        this.cart_id = cart_id;
     }
 }

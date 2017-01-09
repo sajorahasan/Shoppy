@@ -13,10 +13,10 @@
         android:id="@+id/productScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="52dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginBottom="52dp"
         android:scrollbars="none">
 
         <RelativeLayout
@@ -50,7 +50,7 @@
                     android:orientation="vertical">
 
                     <customfonts.MyTextView
-                        android:id="@+id/est"
+                        android:id="@+id/tvCatName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="16dp"
@@ -108,7 +108,7 @@
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 android:padding="16dp"
-                                android:text="Color"
+                                android:text="Quantity"
                                 android:textColor="@color/colorTex"
                                 android:textSize="16dp" />
 
@@ -119,91 +119,32 @@
                                 android:layout_weight="1"
                                 android:orientation="horizontal">
 
-                                <ImageView
+                                <Button
+                                    android:id="@+id/btnMinus"
                                     android:layout_width="34dp"
                                     android:layout_height="34dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="5dp"
-                                    android:background="@drawable/round1" />
-
-                                <ImageView
-                                    android:layout_width="34dp"
-                                    android:layout_height="34dp"
-                                    android:layout_gravity="center"
-                                    android:layout_margin="5dp"
-                                    android:background="@drawable/round2" />
-
-                                <ImageView
-                                    android:layout_width="34dp"
-                                    android:layout_height="34dp"
-                                    android:layout_gravity="center"
-                                    android:layout_margin="5dp"
-                                    android:background="@drawable/round3" />
-
-                            </LinearLayout>
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <customfonts.MyTextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:gravity="center"
-                                android:padding="16dp"
-                                android:text="Size  "
-                                android:textColor="@color/colorTex"
-                                android:textSize="16dp" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:orientation="horizontal">
+                                    android:background="@drawable/ic_minus" />
 
                                 <customfonts.MyTextView
+                                    android:id="@+id/tvQty"
                                     android:layout_width="34dp"
                                     android:layout_height="34dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="5dp"
                                     android:background="@drawable/sizeround"
                                     android:gravity="center"
-                                    android:text="S"
+                                    android:text="1"
                                     android:textColor="@color/colorTex" />
 
-                                <customfonts.MyTextView
+                                <Button
+                                    android:id="@+id/btnPlus"
                                     android:layout_width="34dp"
                                     android:layout_height="34dp"
                                     android:layout_gravity="center"
                                     android:layout_margin="5dp"
-                                    android:background="@drawable/sizeround1"
-                                    android:gravity="center"
-                                    android:text="M"
-                                    android:textColor="@color/colorTex" />
-
-                                <customfonts.MyTextView
-                                    android:layout_width="34dp"
-                                    android:layout_height="34dp"
-                                    android:layout_gravity="center"
-                                    android:layout_margin="5dp"
-                                    android:background="@drawable/sizeround1"
-                                    android:gravity="center"
-                                    android:text="L"
-                                    android:textColor="@color/colorTex" />
-
-                                <customfonts.MyTextView
-                                    android:layout_width="34dp"
-                                    android:layout_height="34dp"
-                                    android:layout_gravity="center"
-                                    android:layout_margin="5dp"
-                                    android:background="@drawable/sizeround1"
-                                    android:gravity="center"
-                                    android:text="XL"
-                                    android:textColor="@color/colorTex" />
+                                    android:background="@drawable/ic_add" />
 
                             </LinearLayout>
                         </LinearLayout>
@@ -220,7 +161,83 @@
                                 android:layout_gravity="center"
                                 android:gravity="center"
                                 android:padding="16dp"
-                                android:text="Quantity  "
+                                android:text="Total Amount "
+                                android:textColor="@color/colorTex"
+                                android:textSize="16dp" />
+
+                            <!--<LinearLayout-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1"-->
+                                <!--android:gravity="center_horizontal"-->
+                                <!--android:orientation="horizontal">-->
+
+                                <customfonts.MyTextView
+                                    android:id="@+id/tvProductTotal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_weight="5"
+                                    android:text="999"
+                                    android:textColor="@color/colorTex"
+                                    android:textSize="21dp" />
+
+                                <!--<customfonts.MyTextView-->
+                                <!--android:layout_width="34dp"-->
+                                <!--android:layout_height="34dp"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:layout_margin="5dp"-->
+                                <!--android:background="@drawable/sizeround"-->
+                                <!--android:gravity="center"-->
+                                <!--android:text="S"-->
+                                <!--android:textColor="@color/colorTex" />-->
+
+                                <!--<customfonts.MyTextView-->
+                                <!--android:layout_width="34dp"-->
+                                <!--android:layout_height="34dp"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:layout_margin="5dp"-->
+                                <!--android:background="@drawable/sizeround1"-->
+                                <!--android:gravity="center"-->
+                                <!--android:text="M"-->
+                                <!--android:textColor="@color/colorTex" />-->
+
+                                <!--<customfonts.MyTextView-->
+                                <!--android:layout_width="34dp"-->
+                                <!--android:layout_height="34dp"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:layout_margin="5dp"-->
+                                <!--android:background="@drawable/sizeround1"-->
+                                <!--android:gravity="center"-->
+                                <!--android:text="L"-->
+                                <!--android:textColor="@color/colorTex" />-->
+
+                                <!--<customfonts.MyTextView-->
+                                <!--android:layout_width="34dp"-->
+                                <!--android:layout_height="34dp"-->
+                                <!--android:layout_gravity="center"-->
+                                <!--android:layout_margin="5dp"-->
+                                <!--android:background="@drawable/sizeround1"-->
+                                <!--android:gravity="center"-->
+                                <!--android:text="XL"-->
+                                <!--android:textColor="@color/colorTex" />-->
+
+                            <!--</LinearLayout>-->
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <customfonts.MyTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:padding="16dp"
+                                android:text="Available Quantity  "
                                 android:textColor="@color/colorTex"
                                 android:textSize="16dp" />
 
@@ -309,17 +326,17 @@
                         android:orientation="vertical">
 
                         <!--<customfonts.MyTextView-->
-                            <!--android:id="@+id/addToCart"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="match_parent"-->
-                            <!--android:layout_margin="10dp"-->
-                            <!--android:background="@drawable/circular_button"-->
-                            <!--android:backgroundTint="@color/colorAccent"-->
-                            <!--android:padding="16dp"-->
-                            <!--android:text="Add to cart"-->
-                            <!--android:textAlignment="center"-->
-                            <!--android:textColor="#ffffff"-->
-                            <!--android:textSize="20dp" />-->
+                        <!--android:id="@+id/addToCart"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_margin="10dp"-->
+                        <!--android:background="@drawable/circular_button"-->
+                        <!--android:backgroundTint="@color/colorAccent"-->
+                        <!--android:padding="16dp"-->
+                        <!--android:text="Add to cart"-->
+                        <!--android:textAlignment="center"-->
+                        <!--android:textColor="#ffffff"-->
+                        <!--android:textSize="20dp" />-->
 
                         <View
                             android:layout_width="match_parent"
@@ -343,14 +360,15 @@
             </LinearLayout>
         </RelativeLayout>
     </ScrollView>
+
     <customfonts.MyTextView
         android:id="@+id/addToCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
         android:layout_alignParentBottom="true"
-        android:text="Add to cart"
+        android:background="@color/colorAccent"
         android:padding="16dp"
+        android:text="Add to cart"
         android:textAlignment="center"
         android:textColor="#ffffff"
         android:textSize="20dp" />
