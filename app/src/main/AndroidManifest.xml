@@ -3,7 +3,7 @@
     package="com.sajorahasan.shoppy">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -24,13 +24,12 @@
         <activity
             android:name=".HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ProductActivity"
             android:parentActivityName=".ProductActivity" />
         <activity android:name=".ProductDetailActivity" />
-        <activity android:name=".CheckoutActivity" />
+        <activity android:name=".PaymentActivity" />
     </application>
 
 </manifest>

@@ -76,7 +76,7 @@ public class CartFragment extends Fragment {
         contCheckout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), CheckoutActivity.class);
+                Intent i = new Intent(getActivity(), PaymentActivity.class);
                 getActivity().startActivity(i);
             }
         });
