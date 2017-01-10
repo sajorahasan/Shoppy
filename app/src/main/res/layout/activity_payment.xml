@@ -50,7 +50,9 @@
                     android:layout_height="100dp"
                     android:orientation="horizontal">
 
-                    <include layout="@layout/payment_paypal" />
+                    <include
+                        android:id="@+id/paypal"
+                        layout="@layout/payment_paypal" />
 
                     <include layout="@layout/payment_visa" />
 
