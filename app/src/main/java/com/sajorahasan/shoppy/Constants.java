@@ -10,10 +10,10 @@ public class Constants {
     static String AccessKey = "12345";
 
     // API URL configuration
-    public static final String AdminPageURL = "http://192.168.43.14/shoppy/";
-    public static final String BASE_URL_APP = "http://192.168.43.14/shoppy/api/";
+    public static final String AdminPageURL = "http://192.168.0.100/shoppy/";
+    public static final String BASE_URL_APP = "http://192.168.0.100/shoppy/api/";
 
-    public static final String BASE_URL = "http://192.168.43.14/";
+    public static final String BASE_URL = "http://192.168.0.100/";
     public static final String REGISTER_OPERATION = "register";
     public static final String LOGIN_OPERATION = "login";
     public static final String CHANGE_PASSWORD_OPERATION = "chgPass";
@@ -23,6 +23,7 @@ public class Constants {
     public static final String IS_LOGGED_IN = "isLoggedIn";
 
     public static final String NAME = "name";
+    public static final String IMAGE_URL = "image";
     public static final String EMAIL = "email";
     public static final String UNIQUE_ID = "unique_id";
     public static final String SNO = "sno";

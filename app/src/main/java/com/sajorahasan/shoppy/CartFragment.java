@@ -2,6 +2,7 @@ package com.sajorahasan.shoppy;
 
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,14 +11,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.sajorahasan.shoppy.adapter.CartAdapter;
 import com.sajorahasan.shoppy.model.Bean;
+import com.sajorahasan.shoppy.model.ProfileData;
 import com.sajorahasan.shoppy.model.ShoppyBean;
+import com.sajorahasan.shoppy.model.ShoppyProfile;
 
 import java.util.ArrayList;
 
 import customfonts.MyTextView;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,9 +41,11 @@ import static com.sajorahasan.shoppy.Constants.BASE_URL;
 public class CartFragment extends Fragment {
     private static final String TAG = "CartFragment";
 
-    private MyTextView contCheckout, cart_total, price_product;
+    private MyTextView tvShippingName, tvShippingAdd, edit, contCheckout, cart_total, price_product;
     private String uId;
     private SharedPreferences pref;
+    private CompositeDisposable mCompositeDisposable;
+    private ArrayList<ProfileData> myDataSource1;
     private ArrayList<Bean> myDataSource;
 
     private ListView listView;
@@ -53,6 +63,9 @@ public class CartFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_cart, container, false);
 
         listView = (ListView) view.findViewById(R.id.listView);
+        tvShippingName = (MyTextView) view.findViewById(R.id.tvShippingName);
+        tvShippingAdd = (MyTextView) view.findViewById(R.id.tvShippingAddress);
+        edit = (MyTextView) view.findViewById(R.id.edit);
         contCheckout = (MyTextView) view.findViewById(R.id.contCheckout);
         cart_total = (MyTextView) view.findViewById(R.id.cart_total);
 
@@ -68,10 +81,53 @@ public class CartFragment extends Fragment {
             }
         });
 
-        loadCart();
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ProfileFragment fragment = new ProfileFragment();
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.fragment_container, fragment);
+                ft.addToBackStack(null);
+                ft.commit();
+            }
+        });
 
+        loadCart();
+        mCompositeDisposable = new CompositeDisposable();
+        loadShippingData();
         return view;
     }
+
+    private void loadShippingData() {
+        RequestInterface requestInterface = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build().create(RequestInterface.class);
+
+        mCompositeDisposable.add(requestInterface.getUserData(uId)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleResponse, this::handleError));
+
+    }
+
+    private void handleResponse(ShoppyProfile shoppyProfile) {
+
+        myDataSource1 = new ArrayList<>(shoppyProfile.getProfiledata());
+
+        tvShippingName.setText(myDataSource1.get(0).getName());
+        tvShippingAdd.setText(myDataSource1.get(0).getUserAddress() + ", "
+                + myDataSource1.get(0).getUserPin() + ", "
+                + myDataSource1.get(0).getUserCity());
+
+
+    }
+
+    private void handleError(Throwable throwable) {
+        Toast.makeText(getActivity(), "Error " + throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+    }
+
 
     private void loadCart() {
         RequestInterface requestInterface = new Retrofit.Builder()

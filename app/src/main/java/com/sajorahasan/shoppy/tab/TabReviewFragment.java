@@ -18,7 +18,7 @@ public class TabReviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_tab_review, container, false);
 
-        listview = (ListView) view.findViewById(R.id.listview);
+        listview = (ListView) view.findViewById(R.id.listView);
 
 
         return view;

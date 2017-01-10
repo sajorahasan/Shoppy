@@ -18,7 +18,24 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import com.sajorahasan.shoppy.model.ProfileData;
+import com.sajorahasan.shoppy.model.ShoppyProfile;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+import static com.sajorahasan.shoppy.Constants.BASE_URL;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -26,7 +43,11 @@ public class HomeActivity extends AppCompatActivity
 
     private SharedPreferences pref;
     private TextView tvUserName, tvEmail;
+    private ImageView imageView;
     private View hView;
+    private CompositeDisposable mCompositeDisposable;
+    private ArrayList<ProfileData> myDataSource;
+    private String uId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +67,7 @@ public class HomeActivity extends AppCompatActivity
         //Initializing Views
         tvUserName = (TextView) hView.findViewById(R.id.tvUserName);
         tvEmail = (TextView) hView.findViewById(R.id.tvUserEmail);
+        imageView = (ImageView) hView.findViewById(R.id.imageView);
 
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -53,14 +75,45 @@ public class HomeActivity extends AppCompatActivity
 
         //Creating a shared preference
         pref = HomeActivity.this.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        uId = pref.getString(Constants.SNO, "");
 
-        tvUserName.setText(pref.getString(Constants.NAME, ""));
-        tvEmail.setText(pref.getString(Constants.EMAIL, ""));
-        Log.d(TAG, "onCreate: Email " + tvEmail.getText());
-        Log.d(TAG, "onCreate: User " + pref.getString(Constants.SNO, ""));
+        mCompositeDisposable = new CompositeDisposable();
+        fetchUserInfo();
 
         //add this line to display menu1 when the activity is loaded
         displaySelectedScreen(R.id.nav_home);
+    }
+
+    private void fetchUserInfo() {
+        RequestInterface requestInterface = new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build().create(RequestInterface.class);
+
+        mCompositeDisposable.add(requestInterface.getUserData(uId)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(this::handleResponse, this::handleError));
+    }
+
+    private void handleResponse(ShoppyProfile shoppyProfile) {
+
+        myDataSource = new ArrayList<>(shoppyProfile.getProfiledata());
+
+        tvUserName.setText(myDataSource.get(0).getName());
+        tvEmail.setText(myDataSource.get(0).getEmail());
+        String url = Constants.BASE_URL_APP;
+        Picasso.with(this)
+                .load(url + myDataSource.get(0).getUserImage())
+                .error(R.drawable.ic_person)
+                .into(imageView);
+
+
+    }
+
+    private void handleError(Throwable throwable) {
+        Toast.makeText(getApplicationContext(), "Error " + throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
     }
 
     @Override

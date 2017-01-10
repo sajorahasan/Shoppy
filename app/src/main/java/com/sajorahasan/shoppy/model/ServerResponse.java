@@ -9,6 +9,7 @@ public class ServerResponse {
     private String result;
     private String message;
     private User user;
+    boolean success;
 
     public String getResult() {
         return result;
@@ -32,5 +33,9 @@ public class ServerResponse {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public boolean getSuccess() {
+        return success;
     }
 }

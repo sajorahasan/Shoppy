@@ -26,6 +26,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
+                android:scaleType="centerCrop"
                 android:src="@drawable/ic_person" />
 
             <!--******FIRST NAME*******-->
@@ -51,7 +52,7 @@
                     android:orientation="vertical">
 
                     <customfonts.MyEditText
-                        android:id="@+id/etFirstName"
+                        android:id="@+id/etUserName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#00000000"
@@ -91,7 +92,7 @@
                     android:orientation="vertical">
 
                     <customfonts.MyEditText
-                        android:id="@+id/etDelPhone"
+                        android:id="@+id/etUserPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#00000000"
@@ -132,7 +133,7 @@
                     android:orientation="vertical">
 
                     <customfonts.MyEditText
-                        android:id="@+id/etAddress"
+                        android:id="@+id/etUserAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#00000000"
@@ -172,7 +173,7 @@
                     android:orientation="vertical">
 
                     <customfonts.MyEditText
-                        android:id="@+id/etPin"
+                        android:id="@+id/etUserPin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#00000000"
@@ -213,7 +214,7 @@
                     android:orientation="vertical">
 
                     <customfonts.MyEditText
-                        android:id="@+id/etCity"
+                        android:id="@+id/etUserCity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="#00000000"
